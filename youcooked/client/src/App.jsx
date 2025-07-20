@@ -10,6 +10,14 @@ import CookbookPage from './pages/CookbookPage';
 import ProfilePage from './pages/ProfilePage';
 import AuthPage from './pages/AuthPage';
 import EggGuidePage from './pages/EggGuidePage';
+import DashboardPage from './pages/DashboardPage';
+import GuidedCookingPage from './pages/GuidedCookingPage';
+import TimerDashboardPage from './pages/TimerDashboardPage';
+import NutritionScannerPage from './pages/NutritionScannerPage';
+import QuantityScannerPage from './pages/QuantityScannerPage';
+import MealPlannerPage from './pages/MealPlannerPage';
+import ShoppingListPage from './pages/ShoppingListPage';
+import CommunityPage from './pages/CommunityPage';
 
 const ProtectedRoute = ({ children }) => {
   const { token, loading } = useContext(AuthContext);
@@ -26,13 +34,21 @@ const AppRoutes = () => {
 
   return (
     <>
-      {user && <Navbar user={user} onLogout={logout} />}
+      <Navbar user={user} onLogout={logout} />
       <Routes>
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/recipe/:id" element={<RecipePage />} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/egg-guide" element={<EggGuidePage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/guided-cooking" element={<GuidedCookingPage />} />
+        <Route path="/timers" element={<TimerDashboardPage />} />
+        <Route path="/nutrition-scanner" element={<NutritionScannerPage />} />
+        <Route path="/quantity-scanner" element={<QuantityScannerPage />} />
+        <Route path="/meal-planner" element={<MealPlannerPage />} />
+        <Route path="/shopping-list" element={<ShoppingListPage />} />
+        <Route path="/community" element={<CommunityPage />} />
         
         <Route
           path="/cookbook"
