@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background-color: #FFFAF5;
+  color: #5C2D00;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF8E1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E8351A;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF5733;
+}
+
+/* Global button styles */
+@layer components {
+  .btn-primary {
+    @apply bg-[#E8351A] text-white rounded-full font-semibold px-6 py-2 hover:bg-[#FF5733] transition-colors;
+  }
+
+  .btn-secondary {
+    @apply bg-[#FFB800] text-[#1A0A00] rounded-full font-semibold px-6 py-2 hover:bg-[#FFC933] transition-colors;
+  }
+
+  .btn-icon {
+    @apply p-2 rounded-full hover:opacity-80 transition-opacity;
+  }
+}
