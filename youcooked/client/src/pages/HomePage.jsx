@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Search, Bell, Flame, Zap } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
 
@@ -9,6 +10,17 @@ const HomePage = () => {
   const [activeTimers, setActiveTimers] = useState([]);
 
   const tags = ['All', 'Breakfast', 'Quick meals', 'Nepali', 'Beginner', 'Vegan'];
+
+  const quickLinks = [
+    { title: 'Dashboard', path: '/dashboard', description: 'Open the central cooking hub.' },
+    { title: 'Guided Cooking', path: '/guided-cooking', description: 'Cook step-by-step with timers.' },
+    { title: 'Timer Dashboard', path: '/timers', description: 'See all your active timers.' },
+    { title: 'Nutrition Scanner', path: '/nutrition-scanner', description: 'Scan ingredients for nutrition.' },
+    { title: 'Quantity Scanner', path: '/quantity-scanner', description: 'Verify your measures visually.' },
+    { title: 'Meal Planner', path: '/meal-planner', description: 'Schedule recipes across the week.' },
+    { title: 'Shopping List', path: '/shopping-list', description: 'Auto-generate grocery lists.' },
+    { title: 'Community', path: '/community', description: 'Browse and share recipes.' },
+  ];
 
   // Mock stats
   const stats = [
@@ -68,24 +80,37 @@ const HomePage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="flex gap-3 flex-wrap"
+            className="flex flex-col gap-4"
           >
-            {tags.map((tag) => {
-              const isActive = activeTag === tag.toLowerCase();
-              return (
-                <button
-                  key={tag}
-                  onClick={() => setActiveTag(tag.toLowerCase())}
-                  className={`px-4 py-2 rounded-full font-semibold transition-colors ${
-                    isActive
-                      ? 'bg-[#FFB800] text-[#1A0A00]'
-                      : 'border border-white/50 text-white hover:border-white'
-                  }`}
-                >
-                  {tag}
-                </button>
-              );
-            })}
+            <div className="flex gap-3 flex-wrap">
+              {tags.map((tag) => {
+                const isActive = activeTag === tag.toLowerCase();
+                return (
+                  <button
+                    key={tag}
+                    onClick={() => setActiveTag(tag.toLowerCase())}
+                    className={`px-4 py-2 rounded-full font-semibold transition-colors ${
+                      isActive
+                        ? 'bg-[#FFB800] text-[#1A0A00]'
+                        : 'border border-white/50 text-white hover:border-white'
+                    }`}
+                  >
+                    {tag}
+                  </button>
+                );
+              })}
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:flex-wrap">
+              <Link
+                to="/dashboard"
+                className="inline-flex items-center justify-center rounded-full bg-[#FFB800] px-6 py-3 text-[#1A0A00] font-semibold shadow-lg hover:bg-[#FFC933] transition-colors w-max"
+              >
+                Open Kitchen Dashboard
+              </Link>
+              <p className="text-white/80 text-sm max-w-xl">
+                Use the dashboard to access guided cooking, timers, nutrition tools, meal planning, and community recipes in one place.
+              </p>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -149,8 +174,25 @@ const HomePage = () => {
         </motion.div>
       )}
 
-      {/* Featured Recipes Section */}
+      {/* Quick Access Section */}
       <div className="max-w-4xl mx-auto px-4 pb-12">
+        <h2 className="text-3xl font-bold text-[#1A0A00] mb-4">Jump to the feature you want</h2>
+        <p className="text-[#5C2D00] mb-8 max-w-2xl">
+          Access the app sections directly from the home page: dashboard, guided cooking, timers, nutrition tools, meal planning, shopping, and community.
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4 mb-12">
+          {quickLinks.map((link) => (
+            <Link
+              to={link.path}
+              key={link.title}
+              className="group rounded-3xl bg-white border-2 border-[#FFEDE9] p-5 shadow hover:-translate-y-1 transition-transform"
+            >
+              <h3 className="text-xl font-bold text-[#1A0A00] mb-2">{link.title}</h3>
+              <p className="text-[#5C2D00]">{link.description}</p>
+            </Link>
+          ))}
+        </div>
+
         <h2 className="text-3xl font-bold text-[#1A0A00] mb-8">Featured Recipes</h2>
         
         <motion.div

@@ -20,6 +20,12 @@ const Navbar = ({ user, onLogout }) => {
             <Link to="/explore" className="text-white opacity-100 hover:opacity-100 font-medium text-sm">
               Explore
             </Link>
+            <Link to="/dashboard" className="text-white opacity-100 hover:opacity-100 font-medium text-sm">
+              Dashboard
+            </Link>
+            <Link to="/community" className="text-white opacity-100 hover:opacity-100 font-medium text-sm">
+              Community
+            </Link>
             <Link to="/cookbook" className="text-white opacity-100 hover:opacity-100 font-medium text-sm">
               Cookbook
             </Link>
@@ -44,7 +50,7 @@ const Navbar = ({ user, onLogout }) => {
               <>
                 <Link
                   to="/profile"
-                  className="w-10 h-10 rounded-full bg-[#FFB800] text-[#1A0A00] flex items-center justify-center font-bold font-semibold"
+                  className="w-10 h-10 rounded-full bg-[#FFB800] text-[#1A0A00] flex items-center justify-center font-bold"
                 >
                   {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
                 </Link>
@@ -85,6 +91,12 @@ const Navbar = ({ user, onLogout }) => {
             </Link>
             <Link to="/egg-guide" className="text-white hover:opacity-80 font-medium">
               Egg Guide
+            </Link>
+            <Link to="/dashboard" className="text-white hover:opacity-80 font-medium">
+              Dashboard
+            </Link>
+            <Link to="/community" className="text-white hover:opacity-80 font-medium">
+              Community
             </Link>
             {user ? (
               <>
